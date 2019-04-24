@@ -17,14 +17,6 @@ struct Movie: Codable {
     let overview: String
     let releaseDate: String
     
-    var posterURL: String? {
-        return posterPath != nil ? "https://image.tmdb.org/t/p/w500/\(posterPath!)" : nil
-    }
-    
-    var backdropURL: String? {
-        return backdropPath != nil ? "https://image.tmdb.org/t/p/w500/\(backdropPath!)" : nil
-    }
-    
     private enum CodingKeys: String, CodingKey {
         case title
         case posterPath = "poster_path"
