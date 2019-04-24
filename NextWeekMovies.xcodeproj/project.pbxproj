@@ -21,6 +21,7 @@
 		7B7B54E1226F8D370095F183 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E0226F8D370095F183 /* MovieTableViewCell.swift */; };
 		7B7B54E4226FB1210095F183 /* GenreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E3226FB1210095F183 /* GenreManager.swift */; };
 		7B7B54E6226FBAC40095F183 /* GenresFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E5226FBAC40095F183 /* GenresFetchResult.swift */; };
+		7B7B54E9226FC4EF0095F183 /* TMDBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E8226FC4EF0095F183 /* TMDBClient.swift */; };
 		7B7B54EB226FF4A60095F183 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54EA226FF4A60095F183 /* Endpoint.swift */; };
 		7B7B54EF226FF6EF0095F183 /* TMDBApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54EE226FF6EF0095F183 /* TMDBApi.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		7B7B54E0226F8D370095F183 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		7B7B54E3226FB1210095F183 /* GenreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreManager.swift; sourceTree = "<group>"; };
 		7B7B54E5226FBAC40095F183 /* GenresFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresFetchResult.swift; sourceTree = "<group>"; };
+		7B7B54E8226FC4EF0095F183 /* TMDBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBClient.swift; sourceTree = "<group>"; };
 		7B7B54EA226FF4A60095F183 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		7B7B54EE226FF6EF0095F183 /* TMDBApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +327,7 @@
 			files = (
 				7B7B54A7226F86060095F183 /* AppDelegate.swift in Sources */,
 				7B7B54D6226F888B0095F183 /* Movie.swift in Sources */,
+				7B7B54E9226FC4EF0095F183 /* TMDBClient.swift in Sources */,
 				7B7B54EF226FF6EF0095F183 /* TMDBApi.swift in Sources */,
 				7B7B54EB226FF4A60095F183 /* Endpoint.swift in Sources */,
 				7B7B54E1226F8D370095F183 /* MovieTableViewCell.swift in Sources */,
