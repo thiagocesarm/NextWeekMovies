@@ -9,86 +9,50 @@
 import UIKit
 
 class MovieListTableViewController: UITableViewController {
+    
+    private var movies: [MovieViewModel] = []
+    private let client = TMDBClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        client.getUpcomingMoviesList(onPage: 1, completion: { (result) in
+            switch result {
+            case .success(let moviesFetchResult):
+                guard let moviesResult = moviesFetchResult?.results else {
+                    return
+                }
+                self.movies = moviesResult.map{ MovieViewModel(movie: $0) }
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let apiError):
+                print("[TMDBClient] Error fetching upcoming movies list: \(apiError.localizedDescription)")
+            }
+        })
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return movies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell else {
+            fatalError("Could not cast reusable cell with identifier 'MovieTableViewCell' to MovieTableViewCell type")
+        }
         
-        let url = URL(string: "https://image.tmdb.org/t/p/w400/or06FN3Dka5tukK1e9sl16pB3iy.jpg")!
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                cell.moviePosterImageView.contentMode = .scaleAspectFit
-                cell.moviePosterImageView.image = UIImage(data: data!)
-            }
-        }.resume()
-
+        cell.movieViewModel = movies[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 219
+        return 220
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
