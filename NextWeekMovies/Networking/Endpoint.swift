@@ -9,12 +9,14 @@
 import Foundation
 
 struct Endpoint {
+    private let host: String
     private let path: String
     private var queryItems: [URLQueryItem] = [
         URLQueryItem(name: "api_key", value: TMDBConstants.API_KEY)
     ]
     
-    init(path: String, queryParams: [String:String]? = nil) {
+    init(host: String, path: String, queryParams: [String:String]? = nil) {
+        self.host = host
         self.path = path
         if queryParams != nil {
             addQueryItems(queryParams!)
@@ -32,8 +34,8 @@ extension Endpoint {
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = TMDBConstants.HOST
-        components.path = TMDBConstants.API_VERSION + path
+        components.host = host
+        components.path = path
         components.queryItems = queryItems
         
         return components.url

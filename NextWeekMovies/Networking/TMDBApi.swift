@@ -9,7 +9,8 @@
 import Foundation
 
 class TMDBConstants {
-    static let HOST = "api.themoviedb.org"
+    static let API_HOST = "api.themoviedb.org"
+    static let API_IMAGE_HOST = "image.tmdb.org"
     static let API_VERSION = "/3"
     static let API_KEY = "1f54bd990f1cdfb230adb312546d765d"
 }
@@ -17,20 +18,25 @@ class TMDBConstants {
 enum TMDBServices {
     case getUpcomingMovies(page: Int)
     case getGenresList
+    case getImage(width: Int, imagePath: String)
     
     var url: URL? {
-        let path: String
+        var host = TMDBConstants.API_HOST
+        var path = TMDBConstants.API_VERSION
         var queryParams: [String:String] = [:]
         
         switch self {
         case .getUpcomingMovies(let pageNum):
-            path = "/movie/upcoming"
+            path = path + "/movie/upcoming"
             queryParams["page"] = String(pageNum)
         case .getGenresList:
-            path = "/genre/movie/list"
+            path = path + "/genre/movie/list"
+        case .getImage(let width, let imagePath):
+            host = TMDBConstants.API_IMAGE_HOST
+            path = "/t/p/w\(width)/\(imagePath)"
         }
         
-        let endpoint = Endpoint(path: path, queryParams: queryParams)
+        let endpoint = Endpoint(host: host, path: path, queryParams: queryParams)
         return endpoint.url
     }
 }
