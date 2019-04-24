@@ -16,6 +16,8 @@ class MovieListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         client.getUpcomingMoviesList(onPage: 1, completion: { (result) in
             switch result {
             case .success(let moviesFetchResult):
@@ -63,5 +65,4 @@ class MovieListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

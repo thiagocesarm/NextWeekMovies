@@ -15,7 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Appearance settings
+        UINavigationBar.appearance().barTintColor = TMDBColors.darkBlue.color
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        
+        // Data fetching
         GenreManager.shared.loadGenres()
+        
         return true
     }
 
