@@ -6,4 +6,10 @@
 //  Copyright © 2019 Thiago Lucena. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UINavigationController {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
