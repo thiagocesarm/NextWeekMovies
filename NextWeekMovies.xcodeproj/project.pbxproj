@@ -18,6 +18,7 @@
 		7B7B54DA226F89030095F183 /* MoviesFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54D9226F89030095F183 /* MoviesFetchResult.swift */; };
 		7B7B54DD226F8A270095F183 /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54DC226F8A270095F183 /* MovieListTableViewController.swift */; };
 		7B7B54E1226F8D370095F183 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E0226F8D370095F183 /* MovieTableViewCell.swift */; };
+		7B7B54E6226FBAC40095F183 /* GenresFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B54E5226FBAC40095F183 /* GenresFetchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		7B7B54D9226F89030095F183 /* MoviesFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFetchResult.swift; sourceTree = "<group>"; };
 		7B7B54DC226F8A270095F183 /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
 		7B7B54E0226F8D370095F183 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		7B7B54E5226FBAC40095F183 /* GenresFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresFetchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				7B7B54D5226F888B0095F183 /* Movie.swift */,
 				7B7B54D7226F88DD0095F183 /* Genre.swift */,
 				7B7B54D9226F89030095F183 /* MoviesFetchResult.swift */,
+				7B7B54E5226FBAC40095F183 /* GenresFetchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				7B7B54DA226F89030095F183 /* MoviesFetchResult.swift in Sources */,
 				7B7B54D8226F88DD0095F183 /* Genre.swift in Sources */,
 				7B7B54DD226F8A270095F183 /* MovieListTableViewController.swift in Sources */,
+				7B7B54E6226FBAC40095F183 /* GenresFetchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
