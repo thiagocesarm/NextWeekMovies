@@ -118,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				7B7B54E7226FC2480095F183 /* Networking */,
+				7B7B54E2226FB10B0095F183 /* Utils */,
 				7B7B54DE226F8D1B0095F183 /* View */,
 				7B7B54DB226F89F20095F183 /* Controller */,
 				7B7B54D4226F88700095F183 /* Model */,
@@ -181,6 +182,14 @@
 				7B7B54E0226F8D370095F183 /* MovieTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7B7B54E2226FB10B0095F183 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7B7B54E3226FB1210095F183 /* GenreManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		7B7B54E7226FC2480095F183 /* Networking */ = {
@@ -326,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B7B54A7226F86060095F183 /* AppDelegate.swift in Sources */,
+				7B7B54E4226FB1210095F183 /* GenreManager.swift in Sources */,
 				7B7B54D6226F888B0095F183 /* Movie.swift in Sources */,
 				7B7B54E9226FC4EF0095F183 /* TMDBClient.swift in Sources */,
 				7B7B54EF226FF6EF0095F183 /* TMDBApi.swift in Sources */,
