@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var moviePosterImageView: UIImageView!
-    @IBOutlet weak var labelsView: UIView!
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var movieGenresLabel: UILabel!
-    @IBOutlet weak var movieReleaseDateLabel: UILabel!
+    @IBOutlet private weak var moviePosterImageView: UIImageView!
+    @IBOutlet private weak var labelsView: UIView!
+    @IBOutlet private weak var movieTitleLabel: UILabel!
+    @IBOutlet private weak var movieGenresLabel: UILabel!
+    @IBOutlet private weak var movieReleaseDateLabel: UILabel!
+    
+    var movieViewModel: MovieViewModel! {
+        didSet {
+            moviePosterImageView.kf.setImage(with: movieViewModel.posterURL, options: [.transition(.fade(0.5))])
+            movieTitleLabel.text = movieViewModel.title
+            movieGenresLabel.text = movieViewModel.genres
+            movieReleaseDateLabel.text = movieViewModel.releaseDate
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
