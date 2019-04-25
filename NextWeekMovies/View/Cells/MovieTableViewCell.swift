@@ -19,22 +19,10 @@ class MovieTableViewCell: UITableViewCell {
     
     var movieViewModel: MovieViewModel! {
         didSet {
-            moviePosterImageView.kf.setImage(with: movieViewModel.posterURL, options: [.transition(.fade(0.5))])
+            moviePosterImageView.kf.setImage(with: movieViewModel.posterURL, options: [.transition(.fade(0.2))])
             movieTitleLabel.text = movieViewModel.title
             movieGenresLabel.text = movieViewModel.genres
             movieReleaseDateLabel.text = movieViewModel.releaseDate
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
