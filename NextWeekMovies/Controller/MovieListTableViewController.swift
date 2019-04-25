@@ -10,15 +10,24 @@ import UIKit
 
 class MovieListTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     private var currentPage = 1
     private var maxPage = 1
     private var movies: [MovieViewModel] = []
     private let client = TMDBClient()
-
+    
+    // MARK: - Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    // MARK: - Data fetching
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         fetchMovies(onPage: 1)
     }
     
@@ -63,6 +72,8 @@ class MovieListTableViewController: UITableViewController {
             }
         })
     }
+    
+    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -80,6 +91,7 @@ class MovieListTableViewController: UITableViewController {
             }
             
             cell.movieViewModel = movies[indexPath.row]
+            
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath) as? LoadingTableViewCell else {
