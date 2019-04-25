@@ -94,14 +94,23 @@ class MovieListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return (indexPath.row < movies.count) ? 220 : 45
     }
-
-    /*
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < movies.count {
+            performSegue(withIdentifier: "moviesListToMovieDetail", sender: movies[indexPath.row])
+        }
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "moviesListToMovieDetail" {
+            guard let movieViewModel = sender as? MovieViewModel,
+                let movieDetailsViewController = segue.destination as? MovieDetailsViewController else {
+                return
+            }
+
+            movieDetailsViewController.movieViewModel = movieViewModel
+        }
     }
-    */
 }
