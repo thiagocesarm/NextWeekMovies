@@ -123,6 +123,10 @@ class MovieListTableViewController: UITableViewController {
             }
 
             movieDetailsViewController.movieViewModel = movieViewModel
+            
+            let backBarButtonItem = UIBarButtonItem()
+            backBarButtonItem.title = "Back"
+            navigationItem.backBarButtonItem = backBarButtonItem
         }
     }
 }
