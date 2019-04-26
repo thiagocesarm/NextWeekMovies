@@ -11,6 +11,7 @@
 		7B4846302270B39E00B40E6E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B48462F2270B39E00B40E6E /* API.swift */; };
 		7B4D3CA822722A6B007FADD7 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D3CA722722A6B007FADD7 /* MovieDetailsViewController.swift */; };
 		7B4D3CAA22728F34007FADD7 /* LoadingSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D3CA922728F34007FADD7 /* LoadingSpinnerViewController.swift */; };
+		7B4D3CAC22729D93007FADD7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D3CAB22729D93007FADD7 /* UIViewController+Extension.swift */; };
 		7B7171FF2270DAC200224316 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7171FE2270DAC200224316 /* MovieViewModel.swift */; };
 		7B7172042271072300224316 /* TMDBColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7172032271072300224316 /* TMDBColors.swift */; };
 		7B71720622710C9B00224316 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B71720522710C9B00224316 /* UINavigationController+Extension.swift */; };
@@ -61,6 +62,7 @@
 		7B48462F2270B39E00B40E6E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7B4D3CA722722A6B007FADD7 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		7B4D3CA922728F34007FADD7 /* LoadingSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinnerViewController.swift; sourceTree = "<group>"; };
+		7B4D3CAB22729D93007FADD7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7B7171FE2270DAC200224316 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		7B7172032271072300224316 /* TMDBColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBColors.swift; sourceTree = "<group>"; };
 		7B71720522710C9B00224316 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				7B71720522710C9B00224316 /* UINavigationController+Extension.swift */,
+				7B4D3CAB22729D93007FADD7 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				7B7B54EF226FF6EF0095F183 /* TMDBApi.swift in Sources */,
 				7B717208227140B000224316 /* LoadingTableViewCell.swift in Sources */,
 				7B7172042271072300224316 /* TMDBColors.swift in Sources */,
+				7B4D3CAC22729D93007FADD7 /* UIViewController+Extension.swift in Sources */,
 				7B7B54EB226FF4A60095F183 /* Endpoint.swift in Sources */,
 				7B7B54E1226F8D370095F183 /* MovieTableViewCell.swift in Sources */,
 				7B7B54DA226F89030095F183 /* MoviesFetchResult.swift in Sources */,
