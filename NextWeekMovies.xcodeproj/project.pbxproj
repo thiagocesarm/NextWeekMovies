@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36D8E54409ED23EFE2539703 /* Pods_NextWeekMoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1AB50174A4F525F4E0A95FD /* Pods_NextWeekMoviesUITests.framework */; };
+		7B3F567C22737CAA00D24C98 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F567B22737CAA00D24C98 /* UITableView+Extensions.swift */; };
 		7B4846302270B39E00B40E6E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B48462F2270B39E00B40E6E /* API.swift */; };
 		7B4D3CA822722A6B007FADD7 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D3CA722722A6B007FADD7 /* MovieDetailsViewController.swift */; };
 		7B4D3CAA22728F34007FADD7 /* LoadingSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D3CA922728F34007FADD7 /* LoadingSpinnerViewController.swift */; };
@@ -59,6 +60,7 @@
 		3677BC1D42CBA9772298E62A /* Pods-NextWeekMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextWeekMovies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextWeekMovies/Pods-NextWeekMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		3B37ABA612C21DEF476405CE /* Pods_NextWeekMoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextWeekMoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A899CAE171A6047F5F40BE7 /* Pods_NextWeekMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextWeekMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B3F567B22737CAA00D24C98 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7B48462F2270B39E00B40E6E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7B4D3CA722722A6B007FADD7 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		7B4D3CA922728F34007FADD7 /* LoadingSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinnerViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				7B71720522710C9B00224316 /* UINavigationController+Extension.swift */,
 				7B4D3CAB22729D93007FADD7 /* UIViewController+Extension.swift */,
+				7B3F567B22737CAA00D24C98 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				7B7B54D8226F88DD0095F183 /* Genre.swift in Sources */,
 				7B7B54DD226F8A270095F183 /* MovieListTableViewController.swift in Sources */,
 				7B7171FF2270DAC200224316 /* MovieViewModel.swift in Sources */,
+				7B3F567C22737CAA00D24C98 /* UITableView+Extensions.swift in Sources */,
 				7B4846302270B39E00B40E6E /* API.swift in Sources */,
 				7B7B54E6226FBAC40095F183 /* GenresFetchResult.swift in Sources */,
 				7B4D3CA822722A6B007FADD7 /* MovieDetailsViewController.swift in Sources */,
