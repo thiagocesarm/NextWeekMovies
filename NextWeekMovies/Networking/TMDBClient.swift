@@ -10,8 +10,15 @@ import Foundation
 
 class TMDBClient {
     
+    // MARK: - Initializers
+    
+    init() {
+        if !GenreManager.shared.genresLoaded {
+            GenreManager.shared.loadGenres()
+        }
+    }
+    
     func getGenresList(completion: @escaping (Result<GenresFetchResult?, APIError>) -> Void ) {
-        
         let genreService = TMDBServices.getGenresList
         guard let url = genreService.url else {
             preconditionFailure("Failed to construct URL")

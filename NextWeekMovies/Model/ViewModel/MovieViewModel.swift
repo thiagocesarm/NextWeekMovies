@@ -10,15 +10,19 @@ import Foundation
 
 final class MovieViewModel {
     
-    // MARK: - Properties
+    // MARK: - Private properties
     
     private let movie: Movie
     private let posterImageWidth = 500
     private let backdropImageWidth = 500
     
+    // MARK: - Initializers
+    
     init(movie: Movie) {
         self.movie = movie
     }
+    
+    // MARK: - Public properties
     
     var title: String {
         return movie.title
@@ -48,7 +52,13 @@ final class MovieViewModel {
     
     var genres: String {
         let movieGenreList = GenreManager.shared.getGenreList(withIds: movie.genreIds)
-        if movieGenreList.isEmpty { return "No genres" }
+        
+        if movieGenreList.isEmpty {
+            if !GenreManager.shared.genresLoaded {
+                GenreManager.shared.loadGenres()
+            }
+            return "No genres"
+        }
         return movieGenreList.joined(separator: ", ")
     }
     
