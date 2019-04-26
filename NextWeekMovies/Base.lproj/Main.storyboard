@@ -54,7 +54,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHc-lc-dgF">
-                                                    <rect key="frame" x="0.0" y="30" width="230.5" height="30"/>
+                                                    <rect key="frame" x="0.0" y="34" width="230.5" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yIq-1T-XbO"/>
                                                     </constraints>
@@ -66,7 +66,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.74940030809859159" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="r1q-11-qqI" firstAttribute="leading" secondItem="Wse-qW-QCY" secondAttribute="leading" id="6PW-Xk-UZQ"/>
-                                                <constraint firstItem="MHc-lc-dgF" firstAttribute="top" secondItem="IR6-zA-OV4" secondAttribute="bottom" id="8wv-9U-JbW"/>
+                                                <constraint firstItem="MHc-lc-dgF" firstAttribute="top" secondItem="IR6-zA-OV4" secondAttribute="bottom" constant="4" id="8wv-9U-JbW"/>
                                                 <constraint firstAttribute="bottom" secondItem="r1q-11-qqI" secondAttribute="bottom" id="9Rv-5b-MDH"/>
                                                 <constraint firstAttribute="trailing" secondItem="MHc-lc-dgF" secondAttribute="trailing" id="EX4-Fa-f5K"/>
                                                 <constraint firstItem="IR6-zA-OV4" firstAttribute="top" secondItem="Wse-qW-QCY" secondAttribute="top" id="JXf-ES-gCv"/>
@@ -170,7 +170,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNK-tX-cDy">
-                                                        <rect key="frame" x="0.0" y="30" width="237" height="30"/>
+                                                        <rect key="frame" x="0.0" y="34" width="237" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="lze-qZ-9rY"/>
                                                         </constraints>
@@ -190,7 +190,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="GNK-tX-cDy" firstAttribute="trailing" secondItem="VKG-GV-e5m" secondAttribute="trailing" id="3py-1f-x8E"/>
-                                                    <constraint firstItem="GNK-tX-cDy" firstAttribute="top" secondItem="VKG-GV-e5m" secondAttribute="bottom" id="A5n-n2-VKd"/>
+                                                    <constraint firstItem="GNK-tX-cDy" firstAttribute="top" secondItem="VKG-GV-e5m" secondAttribute="bottom" constant="4" id="A5n-n2-VKd"/>
                                                     <constraint firstItem="VKG-GV-e5m" firstAttribute="top" secondItem="CdK-ps-Oct" secondAttribute="top" id="N8g-ze-Jgd"/>
                                                     <constraint firstItem="huM-d2-WFM" firstAttribute="trailing" secondItem="GNK-tX-cDy" secondAttribute="trailing" id="PuV-lo-Pwo"/>
                                                     <constraint firstAttribute="trailing" secondItem="VKG-GV-e5m" secondAttribute="trailing" id="VUz-v4-eu8"/>
