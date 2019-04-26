@@ -13,8 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Data fetching
+        GenreManager.shared.loadGenres()
         
         // Appearance settings
         UINavigationBar.appearance().barTintColor = TMDBColors.darkBlue.color
@@ -25,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UIBarButtonItem.appearance().tintColor = UIColor.white
-        
-        // Data fetching
-        GenreManager.shared.loadGenres()
         
         return true
     }
