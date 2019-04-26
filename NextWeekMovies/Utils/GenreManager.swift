@@ -9,8 +9,19 @@
 import Foundation
 
 class GenreManager {
-    static let shared = GenreManager()
+    
+    // MARK: - Private properties
+    
     private var genresDic: [Int:String] = [:]
+    
+    // MARK: - Public properties
+    
+    static let shared = GenreManager()
+    var genresLoaded: Bool {
+        return !genresDic.isEmpty
+    }
+    
+    // MARK: - Public methods
     
     func loadGenres() {
         TMDBClient().getGenresList() { (result) in
@@ -31,7 +42,6 @@ class GenreManager {
     }
     
     func getGenreList(withIds idList: [Int]) -> [String] {
-        
         var genres: [String] = []
         for genreId in idList {
             if let genreName = genresDic[genreId] {
