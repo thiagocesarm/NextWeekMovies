@@ -33,17 +33,40 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if movieViewModel.hasBackdropURL {
-            movieBackdropImageView.kf.setImage(with: movieViewModel.backdropURL, options: [.transition(.fade(0.2))])
-        }
-        
-        if movieViewModel.hasPosterURL {
-            moviePosterImageView.kf.setImage(with: movieViewModel.posterURL, options: [.transition(.fade(0.2))])
-        }
-        
+        loadMovieImages()
         movieTitleLabel.text = movieViewModel.title
         movieGenresLabel.text = movieViewModel.genres
         movieReleaseDateLabel.text = movieViewModel.releaseDate
         movieDescriptionLabel.text = movieViewModel.description
+    }
+    
+    // MARK: - Helper methods
+    
+    private func loadMovieImages() {
+        if movieViewModel.hasBackdropURL {
+            movieBackdropImageView.kf.indicatorType = .activity
+            movieBackdropImageView.kf.setImage(with: movieViewModel.backdropURL) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(let error):
+                    print(error)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    let reloadAction = UIAlertAction(title: "Retry", style: .default, handler: { (_) in
+                        self.loadMovieImages()
+                    })
+                    self.showAlert(withTitle: "Oops...", message: "Could not load backdrop image. Please, try again.", actions: [cancelAction, reloadAction])
+                }
+            }
+        } else {
+            movieBackdropImageView.removeFromSuperview()
+        }
+        
+        if movieViewModel.hasPosterURL {
+            moviePosterImageView.kf.indicatorType = .activity
+            moviePosterImageView.kf.setImage(with: movieViewModel.posterURL)
+        } else {
+            moviePosterImageView.image = UIImage(named: "noImageAvailable")
+        }
     }
 }
