@@ -16,33 +16,34 @@ class MovieListTableViewController: UITableViewController {
     private var maxPage = 1
     private var movies: [MovieViewModel] = []
     private let apiClient = TMDBClient()
-    private let spinner = LoadingSpinnerViewController()
+    private let spinnerView = LoadingSpinnerViewController()
     private var shouldScrollToTop = false
     
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(reloadMovies), for: .valueChanged)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        spinner.startSpinner(onViewController: self)
+        spinnerView.startSpinner(onViewController: self)
         fetchMovies(onPage: 1)
     }
     
     // MARK: - Data fetching
     
-    private func reloadMovies() {
+    @objc private func reloadMovies() {
+        spinnerView.startSpinner(onViewController: self)
         currentPage = 1
         maxPage = 1
         movies = []
-        spinner.startSpinner(onViewController: self)
-        apiClient.resetCache {
-            self.fetchMovies(onPage: self.currentPage)
-        }
+        fetchMovies(onPage: currentPage)
     }
     
     private func getMoviesNextPage() {
@@ -71,6 +72,7 @@ class MovieListTableViewController: UITableViewController {
                 self.movies += moviesResult.map{ MovieViewModel(movie: $0) }
                 
                 DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
                     self.tableView.reloadData()
                     
                     if self.shouldScrollToTop {
@@ -78,8 +80,8 @@ class MovieListTableViewController: UITableViewController {
                         self.tableView.scrollToTopCell(animated: true)
                     }
                     
-                    if self.spinner.isSpinnig {
-                        self.spinner.stopSpinner()
+                    if self.spinnerView.isSpinnig {
+                        self.spinnerView.stopSpinner()
                     }
                 }
                 
@@ -90,14 +92,16 @@ class MovieListTableViewController: UITableViewController {
                     self.shouldScrollToTop = true
                     self.reloadMovies()
                 })
-                
+            
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { _ in
                     self.shouldScrollToTop = false
                     self.fetchMovies(onPage: self.currentPage)
                 })
                 
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
                 DispatchQueue.main.async {
-                    self.showAlert(withTitle: "Ops...", message: "It was not possible to fetch movie list from the internet. Please, try again.", actions: [reloadAction, retryAction])
+                    self.showAlert(withTitle: "Oops...", message: "It was not possible to fetch movies list from the internet. Please, try again.", actions: [reloadAction, retryAction, cancelAction])
                 }
             }
         })
@@ -127,8 +131,8 @@ class MovieListTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath) as? LoadingTableViewCell else {
                 fatalError("Could not cast reusable cell with identifier 'LoadingTableViewCell' to LoadingTableViewCell type")
             }
-            cell.startActivityIndicator()
             getMoviesNextPage()
+            cell.startActivityIndicator()
             return cell
         }
     }
