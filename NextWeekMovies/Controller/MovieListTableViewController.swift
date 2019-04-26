@@ -10,12 +10,14 @@ import UIKit
 
 class MovieListTableViewController: UITableViewController {
     
-    // MARK: - Properties
+    // MARK: - Private properties
     
     private var currentPage = 1
     private var maxPage = 1
     private var movies: [MovieViewModel] = []
-    private let client = TMDBClient()
+    private let apiClient = TMDBClient()
+    private let spinner = LoadingSpinnerViewController()
+    private var shouldScrollToTop = false
     
     // MARK: - Lifecycle
     
@@ -24,17 +26,23 @@ class MovieListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    // MARK: - Data fetching
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        spinner.startSpinner(onViewController: self)
         fetchMovies(onPage: 1)
     }
     
+    // MARK: - Data fetching
+    
     private func reloadMovies() {
         currentPage = 1
+        maxPage = 1
         movies = []
-        fetchMovies(onPage: currentPage)
+        spinner.startSpinner(onViewController: self)
+        apiClient.resetCache {
+            self.fetchMovies(onPage: self.currentPage)
+        }
     }
     
     private func getMoviesNextPage() {
@@ -48,14 +56,13 @@ class MovieListTableViewController: UITableViewController {
     private func fetchMovies(onPage page: Int) {
         guard page <= maxPage else { return }
         
-        client.getUpcomingMoviesList(onPage: page, completion: { (result) in
+        apiClient.getUpcomingMoviesList(onPage: page, completion: { (result) in
             switch result {
             case .success(let moviesFetchResult):
                 guard let moviesResult = moviesFetchResult?.results,
                     let totalPages = moviesFetchResult?.totalPages else {
-                    return
+                        return
                 }
-                
                 
                 if totalPages > self.maxPage {
                     self.maxPage = totalPages
@@ -65,10 +72,33 @@ class MovieListTableViewController: UITableViewController {
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    
+                    if self.shouldScrollToTop {
+                        self.shouldScrollToTop = false
+                        self.tableView.scrollToTopCell(animated: true)
+                    }
+                    
+                    if self.spinner.isSpinnig {
+                        self.spinner.stopSpinner()
+                    }
                 }
                 
             case .failure(let apiError):
                 print("[TMDBClient] Error fetching upcoming movies list: \(apiError.localizedDescription)")
+                
+                let reloadAction = UIAlertAction(title: "Reload entire list", style: .default, handler: { _ in
+                    self.shouldScrollToTop = true
+                    self.reloadMovies()
+                })
+                
+                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { _ in
+                    self.shouldScrollToTop = false
+                    self.fetchMovies(onPage: self.currentPage)
+                })
+                
+                DispatchQueue.main.async {
+                    self.showAlert(withTitle: "Ops...", message: "It was not possible to fetch movie list from the internet. Please, try again.", actions: [reloadAction, retryAction])
+                }
             }
         })
     }
