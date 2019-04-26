@@ -16,12 +16,6 @@ class TMDBClient {
     
     // MARK: - Public methods
     
-    func resetCache(andExecute completion: @escaping () -> Void) {
-        URLSession.shared.reset {
-            completion()
-        }
-    }
-    
     func getGenresList(completion: @escaping (Result<GenresFetchResult?, APIError>) -> Void ) {
         let genreService = TMDBServices.getGenresList
         guard let url = genreService.url else {
