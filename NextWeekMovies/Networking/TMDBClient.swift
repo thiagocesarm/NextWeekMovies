@@ -14,14 +14,6 @@ class TMDBClient {
     
     private let apiRequestsQueue = DispatchQueue(label: "apiRequests")
     
-    // MARK: - Initializers
-    
-    init() {
-        if !GenreManager.shared.genresLoaded {
-            GenreManager.shared.loadGenres()
-        }
-    }
-    
     // MARK: - Public methods
     
     func resetCache(andExecute completion: @escaping () -> Void) {
