@@ -67,6 +67,9 @@ final class MovieViewModel {
     }
     
     var description: String {
+        if movie.overview == "" {
+            return "\tNo description available"
+        }
         return "\t\(movie.overview)"
     }
     
