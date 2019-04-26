@@ -10,11 +10,23 @@ import Foundation
 
 class TMDBClient {
     
+    // MARK: - Private properties
+    
+    private let apiRequestsQueue = DispatchQueue(label: "apiRequests")
+    
     // MARK: - Initializers
     
     init() {
         if !GenreManager.shared.genresLoaded {
             GenreManager.shared.loadGenres()
+        }
+    }
+    
+    // MARK: - Public methods
+    
+    func resetCache(andExecute completion: @escaping () -> Void) {
+        URLSession.shared.reset {
+            completion()
         }
     }
     
@@ -27,7 +39,7 @@ class TMDBClient {
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
             
-            DispatchQueue.main.async {
+            self.apiRequestsQueue.async {
                 if let _ = error {
                     completion(Result.failure(.apiRequestFailure))
                 } else {
@@ -53,7 +65,7 @@ class TMDBClient {
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
             
-            DispatchQueue.main.async {
+            self.apiRequestsQueue.async {
                 if let _ = error {
                     completion(Result.failure(.apiRequestFailure))
                 } else {
