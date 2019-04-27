@@ -23,7 +23,9 @@ enum TMDBServices {
     var url: URL? {
         var host = TMDBConstants.API_HOST
         var path = TMDBConstants.API_VERSION
-        var queryParams: [String:String] = [:]
+        var queryParams: [String:String] = [
+            "api_key": TMDBConstants.API_KEY
+        ]
         
         switch self {
         case .getUpcomingMovies(let pageNum):
@@ -33,7 +35,8 @@ enum TMDBServices {
             path = path + "/genre/movie/list"
         case .getImage(let width, let imagePath):
             host = TMDBConstants.API_IMAGE_HOST
-            path = "/t/p/w\(width)/\(imagePath)"
+            path = "/t/p/w\(width)" + imagePath
+            queryParams = [:]
         }
         
         let endpoint = Endpoint(host: host, path: path, queryParams: queryParams)
