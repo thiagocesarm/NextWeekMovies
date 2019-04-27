@@ -9,7 +9,8 @@ import XCTest
 @testable import NextWeekMovies
 
 class MovieViewModelTests: XCTestCase {
-    override func setUp() {
+    
+    override class func setUp() {
         super.setUp()
         GenreManager.shared.loadGenres()
     }
